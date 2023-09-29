@@ -62,7 +62,7 @@ const SCHEDULER_API = `${schedulerIP}schedulerapi-v1.1/`;
 
 const mmuUICasesheet = 'http://localhost:4200/';
 
-const IOT_API = 'http://localhost:8085/ezdx-hub-connect-srv';
+const IOT_API = `${ADMIN_API}/diagnostics/biologicalScreeningDevice`; 
 
 export const environment = {
   production: false,
