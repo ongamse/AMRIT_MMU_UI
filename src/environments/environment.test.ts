@@ -427,7 +427,7 @@ export const environment = {
   /*Doctor signature download */
   downloadSignUrl: `${COMMON_API}signature1/`,
 
-  //SH20094090,calibration integration,09-06-2021
+  //calibration integration
     getCalibrationStrips: `${ADMIN_API}/fetchCalibrationStrips`,
     deviceDisconnectUrl:`${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub/disconnect`,
 
