@@ -1,3 +1,26 @@
+/* 
+* AMRIT – Accessible Medical Records via Integrated Technology 
+* Integrated EHR (Electronic Health Records) Solution 
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute" 
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
+
+
 import { Component, OnInit, Input, ChangeDetectorRef, ViewChild, HostListener } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { ConfirmationService } from '../../../core/services/confirmation.service';
@@ -197,7 +220,8 @@ export class RegisterPersonalDetailsComponent implements OnInit {
       educationQualification: element.i_bendemographics && element.i_bendemographics.i_beneficiaryeducation && element.i_bendemographics.i_beneficiaryeducation.educationID || null,
       educationQualificationName: element.i_bendemographics && element.i_bendemographics.i_beneficiaryeducation && element.i_bendemographics.i_beneficiaryeducation.educationType || null,
       occupation: element.i_bendemographics && element.i_bendemographics.occupationID || null,
-      occupationOther: element.i_bendemographics && element.i_bendemographics.occupationName || null
+      occupationOther: element.i_bendemographics && element.i_bendemographics.occupationName || null,
+      monthlyFamilyIncome: element.monthlyFamilyIncome
     })
     // this.onMaritalStatusChanged(); // Marital status Changed
     this.masterData.incomeMaster.forEach(stat => {
@@ -301,6 +325,19 @@ export class RegisterPersonalDetailsComponent implements OnInit {
       this.isMobileNoRequired = false;
     }
   }
+
+   /**
+  * check if Occupation  is required
+  *
+  */
+   isOccuptionRequired: boolean = true;
+   checkOccuptionsRequired(val: any) {
+     if (val.checked == true) {
+       this.isOccuptionRequired = true;
+     } else {
+       this.isOccuptionRequired = false;
+     }
+   }
 
   /**
   * check if finger print is required

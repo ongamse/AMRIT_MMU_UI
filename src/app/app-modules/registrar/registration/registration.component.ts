@@ -1,3 +1,26 @@
+/* 
+* AMRIT – Accessible Medical Records via Integrated Technology 
+* Integrated EHR (Electronic Health Records) Solution 
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute" 
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
+
+
 import { RegisterDemographicDetailsComponent } from './register-demographic-details/register-demographic-details.component';
 import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef, AfterViewChecked, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms';
@@ -545,7 +568,8 @@ console.log("demo", otherDetailsForm.value);
         'habitation': demographicsForm.habitation || undefined,
         'incomeStatusID': personalForm.income || undefined,
         'incomeStatus': personalForm.incomeName || undefined,
-        'incomeStatusName': personalForm.incomeName || undefined
+        'incomeStatusName': personalForm.incomeName || undefined,
+        'monthlyFamilyIncome': personalForm.monthlyFamilyIncome || undefined
       },
       'benPhoneMaps': [
         {
@@ -835,6 +859,7 @@ console.log("demo", otherDetailsForm.value);
       'i_bendemographics': {
         'incomeStatusID': personalForm.income,
         'incomeStatusName': personalForm.incomeName,
+        'monthlyFamilyIncome': personalForm.monthlyFamilyIncome,
         'occupationID': personalForm.occupation,
         'occupationName': personalForm.occupationOther,
         'educationID': personalForm.educationQualification,

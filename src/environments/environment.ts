@@ -1,3 +1,26 @@
+/* 
+* AMRIT – Accessible Medical Records via Integrated Technology 
+* Integrated EHR (Electronic Health Records) Solution 
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute" 
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
+
+
 // The file contents for the current environment will overwrite these during build.
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
@@ -22,27 +45,28 @@ const ADMIN_API = `${adminIP}/adminapi-v1.0`;
 // const MMU_API = `http://${IP}:8080/apiman-gateway/IEMR/MMU/1.0/`;
 
 // Without API MAN Configuration
-const COMMON_API_OPEN = `${commonIP}commonapi-v1.0/`;
+const COMMON_API_OPEN = `${commonIP}commonapi-v1.1/`;
 
 
 //const COMMON_API_OPEN = `${commonIP}/`;
-const COMMON_API = `${commonIP}commonapi-v1.0/`;
+const COMMON_API = `${commonIP}commonapi-v1.1/`;
 //const COMMON_API = `${commonIP}/`;
-const MMU_API = `${mmuIP}mmuapi-v1.0/`;
+const MMU_API = `${mmuIP}mmuapi-v1.1/`;
 // const MMU_API = `http://localhost:8080/`;
 //const MMU_API = `${mmuIP}/`;
 //const MMU_API = `http://localhost:8080/`
 
-const TM_API = `${tmIP}tmapi-v1.0/`;
-const COMMON_API_OPEN_SYNC = `http://${SERVER_IP}:8080/commonapi-v1.0/`;
-const SCHEDULER_API = `${schedulerIP}schedulerapi-v1.0/`;
+const TM_API = `${tmIP}tmapi-v1.1/`;
+const COMMON_API_OPEN_SYNC = `http://${SERVER_IP}:8080/commonapi-v1.1/`;
+const SCHEDULER_API = `${schedulerIP}schedulerapi-v1.1/`;
 
 const mmuUICasesheet = 'http://localhost:4200/';
 
-const IOT_API = 'http://localhost:8085/ezdx-hub-connect-srv';
+const biologicalScreeningDeviceAPI = `${ADMIN_API}/diagnostics/biologicalScreeningDevice`; 
 
 export const environment = {
   production: false,
+  isMMUOfflineSync: true,
 
   app: `MMU`,
   RBSTest:`RBS Test`,
@@ -386,10 +410,10 @@ export const environment = {
   saveFile: `${MMU_API}commonInsert/saveFiles`,
   viewFileData: `${MMU_API}common/downloadFile`,
 
-  ioturl: `${IOT_API}`,
-  deviceStatusurl: `${IOT_API}/api/v1/bluetooth/hub/connection_status`,
-  deviceBluetoothurl: `${IOT_API}/api/v1/bluetooth/service_discovery`,
-  connectdeviceBluetoothurl: `${IOT_API}/api/v1/bluetooth/hub_connection`,
+  ioturl: `${biologicalScreeningDeviceAPI}`,
+  deviceStatusurl: `${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub/connection_status`,
+  deviceBluetoothurl: `${biologicalScreeningDeviceAPI}/api/v1/bluetooth/service_discovery`,
+  connectdeviceBluetoothurl: `${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub_connection`,
 
   startWeighturl: '/api/v1/physical_tests/weight',
   startTempurl: '/api/v1/physical_tests/temperature',
@@ -417,7 +441,7 @@ export const environment = {
 
     //SH20094090,calibration integration,09-06-2021
     getCalibrationStrips: `${ADMIN_API}/fetchCalibrationStrips`,
-    deviceDisconnectUrl:`${IOT_API}/api/v1/bluetooth/hub/disconnect`,
+    deviceDisconnectUrl:`${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub/disconnect`,
 
     getLanguageList: `${COMMON_API}beneficiary/getLanguageList`,
 
@@ -429,9 +453,9 @@ export const environment = {
         previousCovidVaccinationUrl: `${COMMON_API}covid/getCovidVaccinationDetails`,
 
           /* SWAASA Urls*/ 
-    getResultStatusURL: `${COMMON_API}swaasa/startAssesment`,
-    getAssessmentUrl: `${COMMON_API}swaasa/getAssesment`,
-    getAssessmentIdUrl: `${COMMON_API}swaasa/getAssesmentDetails`,
+    getResultStatusURL: `${COMMON_API}lungAssessment/startAssesment`,
+    getAssessmentUrl: `${COMMON_API}lungAssessment/getAssesment`,
+    getAssessmentIdUrl: `${COMMON_API}lungAssessment/getAssesmentDetails`,
 
   
 };

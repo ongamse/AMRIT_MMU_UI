@@ -1,3 +1,26 @@
+/* 
+* AMRIT – Accessible Medical Records via Integrated Technology 
+* Integrated EHR (Electronic Health Records) Solution 
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute" 
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
+
+
 // The file contents for the current environment will overwrite these during build.
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
@@ -31,11 +54,12 @@ const SCHEDULER_API = `${schedulerIP}schedulerapi-v1.0/`;
 
 const mmuUICasesheet = `${mmuUI_IP}mmuui-v1.0`;
 
-const IOT_API = 'http://localhost:8085/ezdx-hub-connect-srv';
+const biologicalScreeningDeviceAPI = `${ADMIN_API}/diagnostics/biologicalScreeningDevice`; 
 
 
 export const environment = {
   production: true,
+  isMMUOfflineSync: false,
 
   app: `MMU`,
   RBSTest:`RBS Test`,
@@ -373,10 +397,10 @@ export const environment = {
   //file upload
   saveFile: `${MMU_API}commonInsert/saveFiles`,
   viewFileData: `${MMU_API}common/downloadFile`,
-  ioturl: `${IOT_API}`,
-  deviceStatusurl:`${IOT_API}/api/v1/bluetooth/hub/connection_status`,
-  deviceBluetoothurl:`${IOT_API}/api/v1/bluetooth/service_discovery`,
-  connectdeviceBluetoothurl:`${IOT_API}/api/v1/bluetooth/hub_connection`,
+  ioturl: `${biologicalScreeningDeviceAPI}`,
+  deviceStatusurl:`${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub/connection_status`,
+  deviceBluetoothurl:`${biologicalScreeningDeviceAPI}/api/v1/bluetooth/service_discovery`,
+  connectdeviceBluetoothurl:`${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub_connection`,
 
   startWeighturl: '/api/v1/physical_tests/weight',
   startTempurl: '/api/v1/physical_tests/temperature',
@@ -403,9 +427,9 @@ export const environment = {
   /*Doctor signature download */
   downloadSignUrl: `${COMMON_API}signature1/`,
 
-  //SH20094090,calibration integration,09-06-2021
+  //calibration integration
     getCalibrationStrips: `${ADMIN_API}/fetchCalibrationStrips`,
-    deviceDisconnectUrl:`${IOT_API}/api/v1/bluetooth/hub/disconnect`,
+    deviceDisconnectUrl:`${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub/disconnect`,
 
     getLanguageList: `${COMMON_API}beneficiary/getLanguageList`,
 
@@ -420,9 +444,9 @@ export const environment = {
         previousCovidVaccinationUrl: `${COMMON_API}covid/getCovidVaccinationDetails`,
 
           /* SWAASA Urls*/ 
-    getResultStatusURL: `${COMMON_API}swaasa/startAssesment`,
-    getAssessmentUrl: `${COMMON_API}swaasa/getAssesment`,
-    getAssessmentIdUrl: `${COMMON_API}swaasa/getAssesmentDetails`,
+    getResultStatusURL: `${COMMON_API}lungAssessment/startAssesment`,
+    getAssessmentUrl: `${COMMON_API}lungAssessment/getAssesment`,
+    getAssessmentIdUrl: `${COMMON_API}lungAssessment/getAssesmentDetails`,
 
 
 };

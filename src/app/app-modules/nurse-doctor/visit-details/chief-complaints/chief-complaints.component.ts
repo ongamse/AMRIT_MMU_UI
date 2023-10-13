@@ -1,3 +1,26 @@
+/* 
+* AMRIT – Accessible Medical Records via Integrated Technology 
+* Integrated EHR (Electronic Health Records) Solution 
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute" 
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
+
+
 import {
   Component,
   OnInit,
@@ -21,6 +44,7 @@ import { VisitDetailUtils } from "../../shared/utility/visit-detail-utility";
 import { VisitDetailsComponent } from "app/app-modules/nurse-doctor/visit-details/visit-details.component";
 import { SetLanguageComponent } from "app/app-modules/core/components/set-language.component";
 import { HttpServiceService } from "app/app-modules/core/services/http-service.service";
+import { environment } from "environments/environment";
 
 @Component({
   selector: "patient-chief-complaints",
@@ -123,6 +147,7 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck {
                 flag = true;
                 break;
               }
+              if(environment.isMMUOfflineSync) {
               if(this.benChiefComplaints[i] !=undefined && 
                 this.benChiefComplaints[i] !=null && this.benChiefComplaints[i].chiefComplaint !=undefined && this.benChiefComplaints[i].chiefComplaint !=null && 
                 (this.benChiefComplaints[i].chiefComplaint.toLowerCase().includes("fever") || this.benChiefComplaints[i].chiefComplaint.toLowerCase().includes("cough") || 
@@ -134,6 +159,7 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck {
                 this.enableLungAssessment=true;
                break;
                }
+              }
             }
           }
           if (flag) this.nurseService.setNCDTemp(true);
@@ -228,6 +254,7 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck {
         this.enableProvisionalDiag = true;
         if(val !=undefined && val !=null && val.chiefComplaint !=undefined && val.chiefComplaint !=null && val.chiefComplaint.toLowerCase() === "fever")
         flag=true;
+        if(environment.isMMUOfflineSync) {
         if(val !=undefined && val !=null && val.chiefComplaint !=undefined && val.chiefComplaint !=null && 
           (val.chiefComplaint.toLowerCase().includes("fever") || val.chiefComplaint.toLowerCase().includes("cough") || 
           val.chiefComplaint.toLowerCase().includes("congestion") || val.chiefComplaint.toLowerCase().includes("breathing difficulty") ||
@@ -235,7 +262,8 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck {
           val.chiefComplaint.toLowerCase().includes("influenza") || val.chiefComplaint.toLowerCase().includes("pneumonia") ||
           val.chiefComplaint.toLowerCase().includes("tuberculosis") || val.chiefComplaint.toLowerCase().includes("lung cancer")))
         this.enableLungAssessment=true;
-      })
+      }
+    })
     }
     if(flag)
     this.nurseService.setNCDTemp(true);
@@ -318,6 +346,7 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck {
         this.enableProvisionalDiag = true;
         if(val !=undefined && val !=null && val.chiefComplaint !=undefined && val.chiefComplaint !=null && val.chiefComplaint.toLowerCase() === "fever")
         flag=true;
+        if(environment.isMMUOfflineSync) {
         if(val !=undefined && val !=null && val.chiefComplaint !=undefined && val.chiefComplaint !=null && 
           (val.chiefComplaint.toLowerCase().includes("fever") || val.chiefComplaint.toLowerCase().includes("cough") || 
             val.chiefComplaint.toLowerCase().includes("congestion") || val.chiefComplaint.toLowerCase().includes("breathing problems") ||
@@ -325,6 +354,7 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck {
             val.chiefComplaint.toLowerCase().includes("influenza") || val.chiefComplaint.toLowerCase().includes("pneumonia") ||
             val.chiefComplaint.toLowerCase().includes("tuberculosis") || val.chiefComplaint.toLowerCase().includes("lung cancer")))
         this.enableLungAssessment=true;
+        }
       })
     }
     if(flag)
