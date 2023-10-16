@@ -26,16 +26,17 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
-const commonIP = 'http://10.208.122.38:8080/';
+const commonIP = 'http://10.208.122.100:8080/';
 //const commonIP = 'http://localhost:1040/';
-const tmIP = 'http://10.208.122.38:8080/';
+const tmIP = 'http://10.208.122.100:8080/';
 // const mmuIP = 'http://10.208.122.38:8080/';
-const mmuIP = 'http://10.208.122.38:8080/';
+const mmuIP = 'http://10.208.122.100:8080/';
 //const mmuIP = 'http://localhost:8080/';
-const schedulerIP = 'http://10.208.122.38:8080/';
-const identityIP = 'http://10.208.122.38:8080/';
+const schedulerIP = 'http://10.208.122.100:8080/';
+const identityIP = 'http://10.208.122.100:8080/';
 
-const SERVER_IP = '10.208.122.38';
+const SERVER_IP = '10.208.122.100';
+// const SERVER_IP = 'amritwprdev.piramalswasthya.org';
 const SWYMED_IP = 'swymed://14.143.13.109'
 const adminIP = "http://10.208.122.38:8080";
 const ADMIN_API = `${adminIP}/adminapi-v1.0`;
@@ -57,7 +58,7 @@ const MMU_API = `${mmuIP}mmuapi-v1.1/`;
 //const MMU_API = `http://localhost:8080/`
 
 const TM_API = `${tmIP}tmapi-v1.1/`;
-const COMMON_API_OPEN_SYNC = `http://${SERVER_IP}:8080/commonapi-v1.1/`;
+const COMMON_API_OPEN_SYNC = `http://${SERVER_IP}:8080/commonapi-v1.0/`;
 const SCHEDULER_API = `${schedulerIP}schedulerapi-v1.1/`;
 
 const mmuUICasesheet = 'http://localhost:4200/';
@@ -90,7 +91,8 @@ export const environment = {
   syncLoginUrl: `${COMMON_API_OPEN_SYNC}user/userAuthenticate`,
   loginUrl: `${COMMON_API_OPEN}user/userAuthenticate`,
   logoutUrl: `${COMMON_API_OPEN}user/userLogout`,
-  userlogoutPreviousSessionUrl: `${COMMON_API_OPEN_SYNC}user/logOutUserFromConcurrentSession`,
+  userlogoutPreviousSessionUrl: `${COMMON_API_OPEN}user/logOutUserFromConcurrentSession`,
+  syncUserlogoutPreviousSessionUrl: `${COMMON_API_OPEN_SYNC}user/logOutUserFromConcurrentSession`,
 
 
   /**

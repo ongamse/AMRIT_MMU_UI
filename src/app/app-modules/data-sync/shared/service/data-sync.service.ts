@@ -44,8 +44,8 @@ export class DataSyncService {
   }
 
   userlogoutPreviousSession(userName: string) {
-    console.log("environment.userlogoutPreviousSessionUrl", environment.userlogoutPreviousSessionUrl)
-    return this.http.post(environment.userlogoutPreviousSessionUrl, { userName: userName })
+    console.log("environment.userlogoutPreviousSessionUrl", environment.syncUserlogoutPreviousSessionUrl)
+    return this.http.post(environment.syncUserlogoutPreviousSessionUrl, { userName: userName })
     .map(res => res.json());
   }
 
